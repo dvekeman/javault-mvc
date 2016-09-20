@@ -3,36 +3,29 @@ package hello;
 import org.javault.VaultOutput;
 
 public class SnippetOutput {
-	private String sysout;
-	private String syserr;
+	private String output;
 	private int statusCode;
 
 	public SnippetOutput(VaultOutput vaultOutput) {
-		this.sysout = vaultOutput.getSysout();
-		this.syserr = vaultOutput.getSyserr();
+		this.output = vaultOutput.getOutput();
 		this.statusCode = vaultOutput.getStatusCode();
 	}
 
 	public SnippetOutput(Throwable t){
-		this.syserr = t.getMessage();
+		if(t.getCause() != null){
+			this.output = t.getCause().getMessage();
+		} else {
+			this.output = t.getMessage();
+		}
 		this.statusCode = -2;
-		this.sysout = "";
 	}
 
-	public String getSysout() {
-		return sysout;
+	public String getOutput() {
+		return output;
 	}
 
-	public void setSysout(String sysout) {
-		this.sysout = sysout;
-	}
-
-	public String getSyserr() {
-		return syserr;
-	}
-
-	public void setSyserr(String syserr) {
-		this.syserr = syserr;
+	public void setOutput(String output) {
+		this.output = output;
 	}
 
 	public int getStatusCode() {
@@ -45,6 +38,6 @@ public class SnippetOutput {
 
 	@Override
 	public String toString() {
-		return String.format("VaultOutpu(statusCode=%s, sysout=%s, syserr=%s)", statusCode, sysout, syserr);
+		return String.format("VaultOutpu(statusCode=%s, sysout=%s, syserr=%s)", statusCode, output);
 	}
 }

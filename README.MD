@@ -46,3 +46,13 @@ When running without ```-security```
 When running with ```-security```
 
 ![With security](https://github.com/dvekeman/javault-mvc/blob/master/doc/img/2_with_security.png "With security")
+
+When running malicious code
+
+Input:
+
+![Malicious input](https://github.com/dvekeman/javault-mvc/blob/master/doc/img/3_malicious_input.png "Malicious input")
+
+Output:
+
+![Malicious output](https://github.com/dvekeman/javault-mvc/blob/master/doc/img/3_malicious_output.png "Malicious output")

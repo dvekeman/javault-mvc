@@ -33,6 +33,7 @@ public class SnippetController extends WebMvcConfigurerAdapter {
 
 	@PostMapping("/")
 	public String runSnippet(@Valid SnippetForm snippetForm, BindingResult bindingResult, ModelMap model) {
+		System.out.println("Running snippet");
 
 		if (bindingResult.hasErrors()) {
 			return "form";
@@ -43,7 +44,9 @@ public class SnippetController extends WebMvcConfigurerAdapter {
 		try {
 			VaultOutput vaultOutput = vaultRunner.runInVault0(snippetForm.getSnippet()).get(30, TimeUnit.SECONDS);
 			snippetOutput = new SnippetOutput(vaultOutput);
+			System.out.println("Output is: " + vaultOutput.getOutput());
 		} catch (VaultException| InterruptedException | ExecutionException | TimeoutException e) {
+			e.printStackTrace();
 			snippetOutput = new SnippetOutput(e);
 		}
 		model.addAttribute("snippetOutput", snippetOutput);
