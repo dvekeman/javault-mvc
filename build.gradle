@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+ext {
+    javaultVersion = "0.0.2"
+}
+
+war {
+    baseName = 'javault-mvc'
+    version =  '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    // Allow github repos as library dependencies
+    maven { url "https://jitpack.io" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // Spring boot dependencies
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // The javault dependency
+    compile "com.github.dvekeman:javault:${project.javaultVersion}"
+
+    // Tomcat runtime, important: providedRuntime
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    
+    testCompile("junit:junit")
+}

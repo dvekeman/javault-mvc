@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Javault MVC 0.0.1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'status code: ' + ${snippetOutput.statusCode}" />
+<p th:text="'System output: ' + ${snippetOutput.sysout}" />
+<p th:text="'System error: ' + ${snippetOutput.syserr}" />
+<a href="/javault-mvc-0.0.1">Submit another snippet</a>
+</body>
+</html>

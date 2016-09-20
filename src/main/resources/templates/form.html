@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<form action="#" th:action="@{/}" th:object="${snippetForm}" method="post">
+    <table>
+        <tr>
+            <td>Snippet:</td>
+            <td><textarea rows="4" cols="50" th:field="*{snippet}" /></td>
+            <td th:if="${#fields.hasErrors('snippet')}" th:errors="*{snippet}">Snippet Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
