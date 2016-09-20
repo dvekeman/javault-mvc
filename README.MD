@@ -23,9 +23,13 @@ Copy the war file from build/libs/javault-mvc-0.0.1.war to the tomcat webapps di
     rm -rf /opt/tomcat8/webapps/javault-mvc-0.0.1*
     cp build/libs/javault-mvc-0.0.1.war /opt/tomcat8/webapps/
 
-Start tomcat with security enabled
+Start tomcat with security enabled:
 
     /opt/tomcat8/bin/startup.sh -security
+
+**or** to test what happens when security is disabled:
+
+    /opt/tomcat8/bin/startup.sh
 
 ## Test the application
 
