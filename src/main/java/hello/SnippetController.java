@@ -39,7 +39,7 @@ public class SnippetController extends WebMvcConfigurerAdapter {
 			return "form";
 		}
 
-		VaultRunner vaultRunner = new DefaultVaultRunner();
+		VaultRunner vaultRunner = new DefaultVaultRunner.Builder().build();
 		SnippetOutput snippetOutput;
 		try {
 			VaultOutput vaultOutput = vaultRunner.runInVault0(snippetForm.getSnippet()).get(30, TimeUnit.SECONDS);
