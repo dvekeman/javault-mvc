@@ -14,7 +14,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 ext {
-    javaultVersion = "0.0.3"
+    javaultVersion = "0.0.4"
 }
 
 war {
@@ -44,6 +44,6 @@ dependencies {
 
     // Tomcat runtime, important: providedRuntime
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-    
+
     testCompile("junit:junit")
 }

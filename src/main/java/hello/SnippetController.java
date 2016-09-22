@@ -1,5 +1,6 @@
 package hello;
 
+import java.security.AllPermission;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -39,7 +40,9 @@ public class SnippetController extends WebMvcConfigurerAdapter {
 			return "form";
 		}
 
-		VaultRunner vaultRunner = new DefaultVaultRunner.Builder().build();
+		VaultRunner vaultRunner = new DefaultVaultRunner.Builder()
+				.addPermission(new AllPermission())
+				.build();
 		SnippetOutput snippetOutput;
 		try {
 			VaultOutput vaultOutput = vaultRunner.runInVault0(snippetForm.getSnippet()).get(30, TimeUnit.SECONDS);
